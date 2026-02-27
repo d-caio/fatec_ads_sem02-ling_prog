@@ -1,4 +1,8 @@
-//Calcule e mostre o quadrado dos números entre 10 e 150.
+/*
+OBJETIVO: Calcule e mostre o quadrado dos números entre 10 e 150.
+PROGRAMADOR: Caio Dias (d-caio)
+DATA DA CRIAÇÃO: 26/02/2026
+*/
 
 import java.util.ArrayList;
 import classes.LoopMath;
