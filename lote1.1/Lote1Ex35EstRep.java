@@ -4,8 +4,8 @@ PROGRAMADOR: Caio Dias (d-caio).
 DATA: 04/03/2026
 */
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.text.NumberFormat;
+import java.util.*;
 
 public class Lote1Ex35EstRep {
     public static final int MAX_TRIES = 5;
@@ -38,26 +38,25 @@ public class Lote1Ex35EstRep {
 
                 StringBuilder msgResultado = new StringBuilder("");
 
-                int totalImpares = 0;
-                for (int i = menor; i <= maior; i++) if (i % 2 != 0) totalImpares++;
-                
-                int contador = 0;
                 for (int i = menor; i <= maior; i++) {
                     if (i % 2 != 0) {
-                        if ((contador < 5) || (contador >= (totalImpares - 5)) || (contador == 5 && contador + 1 > totalImpares / 2)) {
-                            msgResultado.append(i < 0 ? "(" + i + ")" : i);
+                        if ((i < (menor + 10)) || (i > (maior - 10))) {
+                            String iFormatado = NumberFormat.getInstance(Locale.of("pt", "BR")).format(i);
+
+                            msgResultado.append(i < 0 ? "(" + iFormatado + ")" : iFormatado);
 
                             if (i != maior && i + 1 != maior) msgResultado.append(" + ");
 
-                        } else if (contador == 5 && contador + 1 <= totalImpares / 2) msgResultado.append("... + ");
+                        } else if (i == menor + 10 || i == menor + 11) msgResultado.append("... + ");
                         
-                        contador++;
                         somaImpares += i;
 
                     }
                 }
 
-                msgResultado.append(" = " + somaImpares);
+                String somaImparesFormatado = NumberFormat.getInstance(Locale.of("pt", "BR")).format(somaImpares);
+
+                msgResultado.append(" = " + somaImparesFormatado);
 
                 System.out.println(msgResultado);
 
