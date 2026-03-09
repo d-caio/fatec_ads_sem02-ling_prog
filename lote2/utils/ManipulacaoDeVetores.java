@@ -17,6 +17,27 @@ public abstract class ManipulacaoDeVetores {
         vetor[index] = valor;
     }
 
+    public Number[] concatenarVetores(Number[]... vetores) {
+        int tamanhoDoNovoVetor = this.vetor.length;
+        
+        for (Number[] vetor:vetores)
+            tamanhoDoNovoVetor += vetor.length;
+
+        Number[] novoVetor = new Number[tamanhoDoNovoVetor];
+
+        int indexAtual = 0;
+
+        System.arraycopy(this.vetor, 0, novoVetor, indexAtual, this.vetor.length);
+        indexAtual += this.vetor.length;
+
+        for (Number[] vetor:vetores) {
+            System.arraycopy(vetor, 0, novoVetor, indexAtual, vetor.length);
+            indexAtual += vetor.length;
+        }
+
+        return novoVetor;
+    }
+
     public double media() {
         double soma = 0.0;
         
