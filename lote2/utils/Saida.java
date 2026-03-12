@@ -4,6 +4,12 @@ import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @deprecated devido à fraqueza dos tipos e falta de encapsulamento.
+ * Nova classe a ser desenvolvida.
+ */
+
+@Deprecated
 public class Saida {
     private static String formatadorBr(Number num) {
         NumberFormat formatador = NumberFormat.getInstance(Locale.forLanguageTag("pt-BR"));

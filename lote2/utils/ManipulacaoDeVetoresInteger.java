@@ -2,6 +2,12 @@ package lote2.utils;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * @deprecated devido à fraqueza dos tipos e falta de encapsulamento.
+ * Nova classe {@link lote2.manipulacao_vetores.ManipulacaoDeVetoresInteger}
+ */
+
+@Deprecated
 public class ManipulacaoDeVetoresInteger extends ManipulacaoDeVetores{
     public ManipulacaoDeVetoresInteger(int tamanhoDoVetor, int vlrMinItem, int vlrMaxItem) {
         super(tamanhoDoVetor);

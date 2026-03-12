@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * @deprecated devido à fraqueza dos tipos e falta de encapsulamento.
+ * Nova classe {@link lote2.manipulacao_vetores.ManipulacaoDeVetoresNumericos}
+ */
+
+@Deprecated
 public abstract class ManipulacaoDeVetores {
     private Number[] vetor;
 
