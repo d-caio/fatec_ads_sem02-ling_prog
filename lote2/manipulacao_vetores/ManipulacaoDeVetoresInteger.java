@@ -1,8 +1,14 @@
 package lote2.manipulacao_vetores;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ManipulacaoDeVetoresInteger extends ManipulacaoDeVetoresNumericos<Integer> {
+    /**
+     * @ManipulacaoDeVetoresInteger construtor original melhorado com ThreadLocalRandom.
+     */
+    
+    @Deprecated
     public ManipulacaoDeVetoresInteger(int tamanhoDoVetor) {
         super(Integer.class, tamanhoDoVetor);
 
@@ -34,6 +40,17 @@ public class ManipulacaoDeVetoresInteger extends ManipulacaoDeVetoresNumericos<I
                 valorMinDoItem *= 2;
                 valorMaxDoItem *= 2;
             }
+        }
+    }
+
+    public ManipulacaoDeVetoresInteger(int tamanhoDoVetor, int vlrMinDosItens, int vlrMaxDosItens) {
+        super(Integer.class, tamanhoDoVetor);
+        
+        for (int i = 0; i < tamanhoDoVetor; i++) {
+
+            Integer item = ThreadLocalRandom.current().nextInt(vlrMinDosItens, (vlrMaxDosItens + 1));
+
+            adicionarItemAoVetor(item, i);
         }
     }
 }

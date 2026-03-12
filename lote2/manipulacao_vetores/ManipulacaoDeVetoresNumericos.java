@@ -2,9 +2,10 @@ package lote2.manipulacao_vetores;
 
 import java.lang.reflect.Array;
 
-abstract class ManipulacaoDeVetoresNumericos<T extends Number> {
+abstract class ManipulacaoDeVetoresNumericos<T extends Number> implements ManipulacaoDeVetoresGerais<T> {
     private T[] vetor;
     private Class<T> classeDoVetor;
+    private boolean isVetorOrdenado = false;
 
     @SuppressWarnings("unchecked")
     ManipulacaoDeVetoresNumericos(Class<T> classeDoVetor, int tamanhoDoVetor) {
@@ -32,6 +33,8 @@ abstract class ManipulacaoDeVetoresNumericos<T extends Number> {
                 }
             }
         }
+
+        isVetorOrdenado = true;
     }
 
     public T somatorioDeDiferencasSimetricas() {
@@ -49,10 +52,10 @@ abstract class ManipulacaoDeVetoresNumericos<T extends Number> {
 
         if (classeDoVetor.equals(Byte.class))
             return classeDoVetor.cast((byte) somatorio);
-        
+
         if (classeDoVetor.equals(Short.class))
             return classeDoVetor.cast((short) somatorio);
-        
+
         if (classeDoVetor.equals(Integer.class))
             return classeDoVetor.cast((int) somatorio);
 
@@ -61,7 +64,32 @@ abstract class ManipulacaoDeVetoresNumericos<T extends Number> {
 
         if (classeDoVetor.equals(Float.class))
             return classeDoVetor.cast((float) somatorio);
-        
+
         return classeDoVetor.cast(somatorio);
+    }
+
+    @Override
+    public int buscaBinaria(T alvo) {
+        if (isVetorOrdenado) {
+
+            int inicio = 0, fim = vetor.length - 1, meio;
+
+            while (inicio <= fim) {
+                meio = (inicio + ((fim - inicio) / 2));
+
+                if (vetor[meio].doubleValue() == alvo.doubleValue())
+                    return meio;
+
+                if (vetor[meio].doubleValue() < alvo.doubleValue())
+                    inicio = meio + 1;
+
+                else
+                    fim = meio - 1;
+            }
+        
+            return -1;
+        }
+
+        throw new IllegalArgumentException("Erro: o vetor não está ordenado.");
     }
 }
