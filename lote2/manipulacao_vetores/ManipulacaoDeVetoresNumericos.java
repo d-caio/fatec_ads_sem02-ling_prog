@@ -1,9 +1,6 @@
 package lote2.manipulacao_vetores;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-
-import lote2.formatacao_saida.FormatacaoDeSaida;
 
 abstract class ManipulacaoDeVetoresNumericos<T extends Number> {
     private T[] vetor;
@@ -21,6 +18,20 @@ abstract class ManipulacaoDeVetoresNumericos<T extends Number> {
 
     public T[] getVetor() {
         return vetor;
+    }
+
+    public void bubbleSort() {
+        T temp;
+
+        for (int i = 0; i < vetor.length; i++) {
+            for (int j = 0; j < vetor.length; j++) {
+                if (((j + 1) < vetor.length) && (vetor[j].doubleValue() > vetor[j + 1].doubleValue())) {
+                    temp = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = temp;
+                }
+            }
+        }
     }
 
     public T somatorioDeDiferencasSimetricas() {
