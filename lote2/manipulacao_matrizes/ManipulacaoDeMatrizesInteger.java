@@ -3,10 +3,10 @@ package lote2.manipulacao_matrizes;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ManipulacaoDeMatrizesInteger extends ManipulacaoDeMatrizesNumericas<Integer> {
+    private Integer[][] matriz = getMatriz();
+    
     public ManipulacaoDeMatrizesInteger(int numDeLinhas, int numDeColunas, int vlrMinDosItens, int vlrMaxDosItens) {
         super(Integer.class, numDeLinhas, numDeColunas);
-
-        Integer[][] matriz = getMatriz();
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
@@ -20,8 +20,6 @@ public class ManipulacaoDeMatrizesInteger extends ManipulacaoDeMatrizesNumericas
     public ManipulacaoDeMatrizesInteger(int numDeLinhas, int numDeColunas, int vlrMinDosItens, int vlrMaxDosItens, int base) {
         super(Integer.class, numDeLinhas, numDeColunas);
 
-        Integer[][] matriz = getMatriz();
-
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 Integer item = (i == j) ? Math.powExact(base, i) : ThreadLocalRandom.current().nextInt(vlrMinDosItens, vlrMaxDosItens + 1);
@@ -31,10 +29,27 @@ public class ManipulacaoDeMatrizesInteger extends ManipulacaoDeMatrizesNumericas
         }        
     }
 
+    public ManipulacaoDeMatrizesInteger(int numDeLinhas, int numDeColunas) {
+        super(Integer.class, numDeLinhas, numDeColunas);
+
+        Integer item = 1, vlrMax = (numDeColunas / 2);
+        int indiceMin = 0, indiceMax = numDeColunas;
+
+        while (item.intValue() <= vlrMax.intValue()) {
+            for (int i = indiceMin; i < indiceMax; i++) {
+                for (int j = indiceMin; j < indiceMax; j++) {
+                    adicionarItem(i, j, item);
+                }
+            }
+
+            item = item.intValue() + 1;
+            indiceMin++;
+            indiceMax--;
+        }
+    }
+
     @Override
     public Integer[] SomaVetorialDaMatriz(int indiceDeReferencia, int indiceIterador, boolean isLinha) {
-        Integer[][] matriz = getMatriz();
-
         Integer[] somaVetorial = new Integer[indiceDeReferencia];
 
         for (int i = 0; i < indiceDeReferencia; i++) {
@@ -57,8 +72,6 @@ public class ManipulacaoDeMatrizesInteger extends ManipulacaoDeMatrizesNumericas
 
     @Override
     public Integer somaDaMatriz() {
-        Integer[][] matriz = getMatriz();
-        
         Integer soma = 0;
 
         for (Integer[] vetor:matriz)
