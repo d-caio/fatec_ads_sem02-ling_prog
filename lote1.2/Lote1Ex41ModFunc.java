@@ -1,13 +1,10 @@
 /*
 OBJETIVO: Mostre todas as possibilidades de 2 dados de forma que a soma tenha como resultado 7.
 PROGRAMADOR: Caio Dias (d-caio).
-DATA: 21/03/2026
+DATA: 26/03/2026
 */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Lote1Ex41ModFunc {
     public static void main(String[] args) {
