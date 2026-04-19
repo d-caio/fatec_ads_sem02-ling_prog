@@ -1,11 +1,15 @@
 package menus;
 
-class Opcao {
-    public int codigo;
-    public String nome;
+public class Opcao {
+    private int codigo;
+    private String nome;
 
-    protected Opcao(int codigo, String nome) {
+    public Opcao(int codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
     }
+
+    public int getCodigo() { return this.codigo; }
+
+    public String getNome() { return this.nome; }
 }

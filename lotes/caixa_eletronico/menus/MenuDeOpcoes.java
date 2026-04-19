@@ -1,13 +1,13 @@
 package menus;
 
-import javax.swing.JOptionPane;
+import inputs_outputs.InputsEOutputs;
 
-abstract class MenuDeOpcoes {
+public class MenuDeOpcoes {
     private Opcao[] opcoes;
-    private String texto;
     private String titulo;
+    private String texto;
 
-    protected MenuDeOpcoes(String titulo, Opcao... opcoes) {
+    public MenuDeOpcoes(String titulo, Opcao... opcoes) {
         this.titulo = titulo;
 
         this.opcoes = new Opcao[opcoes.length];
@@ -16,9 +16,9 @@ abstract class MenuDeOpcoes {
 
         for (int i = 0; i < opcoes.length; i++) {
             textoBuilder
-                    .append(opcoes[i].codigo)
+                    .append(opcoes[i].getCodigo())
                     .append(" - ")
-                    .append(opcoes[i].nome)
+                    .append(opcoes[i].getNome())
                     .append("\n");
 
             this.opcoes[i] = opcoes[i];
@@ -29,36 +29,24 @@ abstract class MenuDeOpcoes {
     }
 
     public int selecionarOpcao() {
-        String entrada = JOptionPane.showInputDialog(
-                null,
-                texto,
-                titulo,
-                JOptionPane.QUESTION_MESSAGE);
+        String inputDeOpcao = InputsEOutputs.mostrarDialogoDeInput(titulo, texto);
 
-        if (entrada == null) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Programa encerrado pelo(a) usuário(a).",
-                    "Fim",
-                    JOptionPane.WARNING_MESSAGE);
+        if (inputDeOpcao == null)
+            throw new NullPointerException("Programa encerrado pelo usuário.");
 
-            return -1;
-        }
+        int codigoDaOpcao = Integer.parseInt(inputDeOpcao);
 
-        int opcaoSelecionada = Integer.parseInt(entrada);
+        boolean opcaoValida = false;
 
-        boolean isOpcaoValida = false;
-
-        for (Opcao opcao : opcoes)
-            if (opcaoSelecionada == opcao.codigo) {
-                isOpcaoValida = true;
+        for (Opcao opcao:opcoes)
+            if (codigoDaOpcao == opcao.getCodigo()) {
+                opcaoValida = true;
                 break;
             }
 
-        if (!isOpcaoValida)
+        if (!opcaoValida)
             throw new IllegalArgumentException("Opção inválida.");
 
-        return opcaoSelecionada;
-
+        return codigoDaOpcao;
     }
 }
