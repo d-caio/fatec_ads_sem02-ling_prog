@@ -4,7 +4,7 @@ Repositório contendo a coleção de exercícios resolvidos para a disciplina de
 
 **Instrutor:** Prof. Ricardo Satoshi  
 **Instituição:** Faculdade de Tecnologia da Zona Leste  
-**Curso:** Análise e Desenvolvimento de Sistemas
+**Curso:** Análise e Desenvolvimento de Sistemas  
 **Semestre:** 2026/1
 
 ## 📚 Sobre o Projeto
