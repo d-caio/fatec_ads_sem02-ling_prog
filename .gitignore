@@ -1,4 +1,2 @@
 .~lock.*#
-/recursividade/recursividade/target/
-/recursividade/nbproject/private/
-/recursividade/build/
+*.class
