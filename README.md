@@ -2,6 +2,11 @@
 
 Repositório contendo a coleção de exercícios resolvidos para a disciplina de **Linguagem de Programação**. Os códigos foram desenvolvidos em **Java**, demonstrando a aplicação prática de conceitos fundamentais, desde estruturas básicas até sistemas orientados a objetos.
 
+**Instrutor:** Prof. Ricardo Satoshi  
+**Instituição:** Faculdade de Tecnologia da Zona Leste  
+**Curso:** Análise e Desenvolvimento de Sistemas
+**Semestre:** 2026/1
+
 ## 📚 Sobre o Projeto
 
 Este conjunto de exercícios foi desenvolvido para consolidar o aprendizado de lógica de programação e Java. O projeto é dividido em lotes que cobrem diferentes níveis de complexidade:
